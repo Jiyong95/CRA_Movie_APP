@@ -28,6 +28,7 @@ class App extends React.Component {
   }
   render() {
     //구조 분해 할당
+    console.log(this.state.movies);
     const { isLoading, movies } = this.state;
     return (
       <section className="container">
@@ -46,6 +47,7 @@ class App extends React.Component {
                   title={movie.title}
                   summary={movie.summary}
                   poster={movie.medium_cover_image}
+                  genres={movie.genres}
                 />
               ))}
             </div>
