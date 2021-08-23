@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import Movie from "./Movie";
+import "./App.css";
 
 class App extends React.Component {
   state = {
@@ -29,20 +30,28 @@ class App extends React.Component {
     //구조 분해 할당
     const { isLoading, movies } = this.state;
     return (
-      <div>
-        {isLoading
-          ? "Loading"
-          : movies.map((movie) => (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                year={movie.year}
-                title={movie.title}
-                summary={movie.summary}
-                poster={movie.image}
-              />
-            ))}
-      </div>
+      <section className="container">
+        <div>
+          {isLoading ? (
+            <div className="loader">
+              <span className="loader__text">Loading...</span>
+            </div>
+          ) : (
+            <div className="movies">
+              {movies.map((movie) => (
+                <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  year={movie.year}
+                  title={movie.title}
+                  summary={movie.summary}
+                  poster={movie.medium_cover_image}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
     );
   }
 }
